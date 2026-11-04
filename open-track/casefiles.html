@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset=utf-8><style>
+body { background:#e9e4d8; font-family:'Courier New',monospace; color:#222; margin:0; padding:30px; }
+.case { background:#fbf8f0; max-width:860px; margin:0 auto 40px; padding:30px 40px;
+        border:1px solid #b9b2a0; box-shadow:4px 4px 0 #cfc8b6; position:relative; }
+h1 { font-size:22px; letter-spacing:2px; border-bottom:2px solid #222; padding-bottom:6px; }
+h2 { font-size:15px; letter-spacing:1px; margin-top:22px; text-transform:uppercase; }
+.stamp { position:absolute; top:28px; right:36px; transform:rotate(-8deg); font-size:20px;
+         font-weight:bold; padding:6px 14px; border:4px solid; letter-spacing:2px; }
+.forged { color:#b3261e; border-color:#b3261e; }
+.auth { color:#1e7b34; border-color:#1e7b34; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+td, th { border-bottom:1px dashed #aaa; padding:6px; vertical-align:top; text-align:left; }
+.tag { font-weight:bold; }
+.g { color:#1e7b34; } .r { color:#b3261e; }
+.note { font-size:12px; color:#666; }
+img { max-width:100%; border:1px solid #ccc; margin-top:8px; }
+</style></head><body>
+<div class="case"><div class="stamp forged">FORGERY DETECTED</div>
+<h1>CASE FILE #001: public_2</h1>
+<p><b>Order of the public generator:</b> n = ord(g) = 37199287125</p>
+<h2>Parties</h2>
+<table><tr><th>Broadcast</th><th>Verdict</th><th>Evidence</th></tr><tr><td class='tag'>A</td><td class='g'>AUTHENTIC</td><td>A = g<sup>27142984859</sup><br><span class='note'>verified on the device</span></td></tr><tr><td class='tag'>B</td><td class='r'>FORGED</td><td>ord(B) = 1771394625<br>smallest q with B<sup>q</sup> &isin; &lang;g&rang;: <b>q = 585585</b><br>verified on device: B<sup>585585</sup> = g<sup>13846742910</sup><br>&lang;g, B&rang; &cong; Z<sub>585585</sub> &times; Z<sub>37199287125</sub><br>split: B = g<sup>23646</sup> &middot; y, with y<sup>585585</sup> = e <span class='note'>(c defined mod 63525)</span></td></tr><tr><td class='tag'>C</td><td class='g'>AUTHENTIC</td><td>C = g<sup>23212474064</sup><br><span class='note'>verified on the device</span></td></tr></table>
+<h2>Recovered keys</h2><p>pair key g<sup>(ac)</sup> = g<sup>23054424601</sup> <span class='note'>(checked on the device)</span></p>
+<h2>About the hidden group</h2><p>|G| &ge; 21783344551093125 (&asymp; 2<sup>54.3</sup>)<br><b>G is not cyclic</b>: &lang;g, B&rang; &cong; Z<sub>585585</sub> &times; Z<sub>37199287125</sub> with gcd 585585 &gt; 1, and every subgroup of a cyclic group is cyclic</p>
+<h2>Verdict</h2><p>Broadcast(s) B forged. No three-party key exists; the honest pair's channel remains readable.</p>
+</div>
+<div class="case"><div class="stamp forged">FORGERY DETECTED</div>
+<h1>CASE FILE #002: mock Z_2^20 x Z_6, forged AB</h1>
+<p><b>Order of the public generator:</b> n = ord(g) = 1572864</p>
+<h2>Parties</h2>
+<table><tr><th>Broadcast</th><th>Verdict</th><th>Evidence</th></tr><tr><td class='tag'>A</td><td class='r'>FORGED</td><td>ord(A) = 32768<br>smallest q with A<sup>q</sup> &isin; &lang;g&rang;: <b>q = 2</b><br>verified on device: A<sup>2</sup> = g<sup>999648</sup><br>&lang;g, A&rang; &cong; Z<sub>2</sub> &times; Z<sub>1572864</sub><br>split: A = g<sup>499824</sup> &middot; y, with y<sup>2</sup> = e <span class='note'>(c defined mod 786432)</span></td></tr><tr><td class='tag'>B</td><td class='r'>FORGED</td><td>ord(B) = 262144<br>smallest q with B<sup>q</sup> &isin; &lang;g&rang;: <b>q = 2</b><br>verified on device: B<sup>2</sup> = g<sup>900756</sup><br>&lang;g, B&rang; &cong; Z<sub>2</sub> &times; Z<sub>1572864</sub><br>split: B = g<sup>450378</sup> &middot; y, with y<sup>2</sup> = e <span class='note'>(c defined mod 786432)</span></td></tr><tr><td class='tag'>C</td><td class='g'>AUTHENTIC</td><td>C = g<sup>247294</sup><br><span class='note'>verified on the device</span></td></tr></table>
+<h2>Recovered keys</h2><p>no pair of genuine parties: no keys recoverable</p>
+<h2>About the hidden group</h2><p>tag group Q = &lang;g, A, B, C&rang; / &lang;g&rang;: |Q| = 2<br>tags share relations: the same fake was reused<br>|G| &ge; 3145728 (&asymp; 2<sup>21.6</sup>)<br><b>G is not cyclic</b>: &lang;g, A&rang; &cong; Z<sub>2</sub> &times; Z<sub>1572864</sub> with gcd 2 &gt; 1, and every subgroup of a cyclic group is cyclic</p>
+<h2>Verdict</h2><p>Broadcast(s) A, B forged. No three-party key exists.</p>
+</div>
+<div class="case"><div class="stamp forged">FORGERY DETECTED</div>
+<h1>CASE FILE #003: mock non-cyclic ~2^58, forged C</h1>
+<p><b>Order of the public generator:</b> n = ord(g) = 53838929495</p>
+<h2>Parties</h2>
+<table><tr><th>Broadcast</th><th>Verdict</th><th>Evidence</th></tr><tr><td class='tag'>A</td><td class='g'>AUTHENTIC</td><td>A = g<sup>47970848837</sup><br><span class='note'>verified on the device</span></td></tr><tr><td class='tag'>B</td><td class='g'>AUTHENTIC</td><td>B = g<sup>46424138496</sup><br><span class='note'>verified on the device</span></td></tr><tr><td class='tag'>C</td><td class='r'>FORGED</td><td>ord(C) = 53838929495<br>smallest q with C<sup>q</sup> &isin; &lang;g&rang;: <b>q = 6145295</b><br>verified on device: C<sup>6145295</sup> = g<sup>38678486730</sup><br>&lang;g, C&rang; &cong; Z<sub>6145295</sub> &times; Z<sub>53838929495</sub><br>split: C = g<sup>6294</sup> &middot; y, with y<sup>6145295</sup> = e <span class='note'>(c defined mod 8761)</span></td></tr></table>
+<h2>Recovered keys</h2><p>pair key g<sup>(ab)</sup> = g<sup>7778455207</sup> <span class='note'>(checked on the device)</span></p>
+<h2>About the hidden group</h2><p>|G| &ge; 330856104230976025 (&asymp; 2<sup>58.2</sup>)<br><b>G is not cyclic</b>: &lang;g, C&rang; &cong; Z<sub>6145295</sub> &times; Z<sub>53838929495</sub> with gcd 6145295 &gt; 1, and every subgroup of a cyclic group is cyclic</p>
+<h2>Verdict</h2><p>Broadcast(s) C forged. No three-party key exists; the honest pair's channel remains readable.</p>
+</div>
+<div class="case"><div class="stamp forged">FORGERY DETECTED</div>
+<h1>CASE FILE #004: your meeting: G = Z_81 x Z_405, forged B, seed 1</h1>
+<p><b>Order of the public generator:</b> n = ord(g) = 405</p>
+<h2>Parties</h2>
+<table><tr><th>Broadcast</th><th>Verdict</th><th>Evidence</th></tr><tr><td class='tag'>A</td><td class='g'>AUTHENTIC</td><td>A = g<sup>392</sup><br><span class='note'>verified on the device</span></td></tr><tr><td class='tag'>B</td><td class='r'>FORGED</td><td>ord(B) = 405<br>smallest q with B<sup>q</sup> &isin; &lang;g&rang;: <b>q = 81</b><br>verified on device: B<sup>81</sup> = g<sup>81</sup><br>&lang;g, B&rang; &cong; Z<sub>81</sub> &times; Z<sub>405</sub><br>split: B = g<sup>1</sup> &middot; y, with y<sup>81</sup> = e <span class='note'>(c defined mod 5)</span></td></tr><tr><td class='tag'>C</td><td class='g'>AUTHENTIC</td><td>C = g<sup>131</sup><br><span class='note'>verified on the device</span></td></tr></table>
+<h2>Recovered keys</h2><p>pair key g<sup>(ac)</sup> = g<sup>322</sup> <span class='note'>(checked on the device)</span></p>
+<h2>About the hidden group</h2><p>|G| &ge; 32805 (&asymp; 2<sup>15.0</sup>)<br><b>G is not cyclic</b>: &lang;g, B&rang; &cong; Z<sub>81</sub> &times; Z<sub>405</sub> with gcd 81 &gt; 1, and every subgroup of a cyclic group is cyclic</p>
+<h2>Verdict</h2><p>Broadcast(s) B forged. No three-party key exists; the honest pair's channel remains readable.</p>
+</div></body></html>
